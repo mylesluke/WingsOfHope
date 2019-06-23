@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* Everything will inherit the border-box below */
+}
+
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+/* Reset of all the anchor tags */
+a {
+    text-decoration: none;
+}
+
+/* Grid Container */
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    /* Added items below in classes, now setup grid template columns and rows */
+    grid-template-columns: 15% auto;
+    grid-template-rows: auto 80%; /* for the side bar */
+    grid-template-areas: 
+        "sidebar main" /* we want sidebar along side main content */
+        "sidebar main" /* replicating above */
+        "sidebar footer"; /* Sidebar is along side footer */
+}
+
+/* Sidebar Container */
+.sidebar {
+    grid-area: sidebar; /* Give the area a name */
+    background-color: #2c1b28;
+}
+
+/* Centering Navigation Links */
+nav {
+    text-align: center;
+}
+
+/* Title */
+.brand {
+    background-color: #fff;
+    padding: 2.5rem 0;
+}
+
+/* Selecting the link within brand class */
+.brand > .nav-link {
+    font-size: 2rem;
+    color: #2c1b28;
+}
+
+/* Remove the bullet points from the list */
+.nav-list {
+    list-style: none;
+}
+
+/* Spacing between each nav item */
+.nav-item {
+    margin: 5rem 0;
+}
+
+
+/* Navigation links */
+.nav-link {
+    font-size: 1.6rem;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+/* Hover Link Effect */
+.nav-link:hover {
+    border-bottom: 2px solid #fff;
+}
+
+/* Main Content Container w/ bg image */
+.main-content {
+    grid-area: main;
+    background: linear-gradient(326deg, #5f0a87 0%, rgba(164, 80, 139, 0.8) 74%),
+    url("./images/grid-bg1.jpg") center no-repeat;
+    background-size: cover;
+    position: relative; /*Going to set something within the main-content to absolute*/
+}
+
+/* Actual Content within the above container */
+.main-content-cta {
+    position: absolute; /* Can manipulate the content inside the main-content container */
+    top: 55%;
+    right: 10%;
+    transform: translateY(-55%);
+    color:#fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Content Style (heading) */
+.main-content-cta h1 { 
+    font-size: 5rem;
+}
+
+/* Content Style (sub-heading) */
+.main-content-cta h6 { 
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Button Container */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* Button Style */
+.btn {
+    color: #fff;
+    padding: 1.5rem 5rem;
+    border: 2px solid rgba(255,255,255,.6);
+}
+/* Hover Button Effect */
+.btn:hover{ 
+    border: 2px solid #000;
+}
+
+/* Give spacing between buttons using first button */
+.btn:first-child {
+    margin-right: 1rem;
+}
+
+/* Date under buttons */
+.main-content-cta .date {
+    color: #facc6b;
+    font-size: 2rem;
+}
+
+/* Footer Container */
+.footer {
+    grid-area: footer;
+    background-image: linear-gradient(315deg, #fabc3c 0%, #facc6b 75%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Creating container for heading */
+.panc-notice {
+    height: inherit; /* Takes .footer height and inherits into this container */
+    width: 100%;
+    max-width: 40rem; /* Doesn't get bigger than 40rem*/
+    background-color: #fff;
+    display: flex;
+}
+
+/* Heading */
+.panc-notice h1 {
+    margin: auto; /* Centering */
+    text-transform: uppercase;
+    position: relative; /* Creating a sudo element underneath */
+}
+
+/* Creating Line Underneath Heading */
+.panc-notice h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+    width: 5.5rem;
+    height: 3px;
+    background-image: linear-gradient(315deg, #fabc3c 0%, #facc6b 75%);
+}
+
+/* Stats Container */
+.statistics {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5rem;
+}
+
+/* items within Container */
+.statistics .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Sizing the Icons */
+.statistics .item  i{
+    font-size: 8rem;
+    padding: 0 3rem;
+}
+
+/* Item Description */
+.item-desc p{
+    font-size: 1.4rem;
+}
+
+.menu-toggle {
+    color: #5f0a87;
+    float: right;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    padding: 10px 15px;
+}
+
+/* When the browser window is 768px wide or less (ipad width)*/
+@media only screen and (max-width: 768px) {
+    #wrapper {
+        grid-template-columns: 20% auto; 
+    }
+    .brand > .nav-link {
+        font-size: 1.5rem;  
+    }
+    
+    .nav-link {
+        font-size: 1.2rem; 
+    }
+    
+    .main-content-cta {
+        top: 70%;
+        right: 20%;
+    }
+    .panc-notice {
+        width: 30%;
+    }
+    .panc-notice h1 {
+        font-size: 1.5rem;
+        margin-left: 20px;
+    }
+    .panc-notice h1::before {
+        width: 5rem;
+    }
+    .statistics {
+        padding: 0 1.2rem;
+        justify-content: baseline;
+    }
+    .statistics .item i{
+        font-size: 3rem;
+        padding: 0 1.5rem;
+    }
+    .item-desc p {
+        font-size: 1.2rem;
+    }
+}
+
+/* When the browser window is 600px wide or less */
+@media only screen and (max-width: 600px) {
+    #wrapper {
+        grid-template-columns: 20% auto; /* Increased Column Wide */
+    }
+    .brand > .nav-link {
+        font-size: 1.2rem;  /* Reduced Font-size */
+    }
+    
+    .nav-link {
+        font-size: 1rem; /* Reduced Font-size */
+    }
+
+    /* Positioning of the content inside main-content container */
+    .main-content-cta {
+        top: 70%;
+        right: 10%;
+    }
+    .panc-notice h1 {
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+    .panc-notice h1::before {
+        width: 3rem;
+    }
+    .statistics {
+        padding: 0 3rem;
+        justify-content: baseline;
+    }
+    .statistics .item i{
+        font-size: 2rem;
+        padding: 0 1.5rem;
+    }
+    .item-desc p {
+        font-size: .8rem;
+    }
+}
+
+/* When the browser window is 360px wide or less (S7 Edge) */
+@media only screen and (max-width: 360px) {
+    #wrapper {
+        grid-template-columns: 100% auto;
+        grid-template-areas:
+            "sidebar"
+            "main"
+            "footer";
+    }
+    .brand > .nav-link {
+        font-size: 2rem;  
+        padding: 1rem 1rem;
+    }
+    .nav-link {
+        font-size: 1.2rem;
+    }
+    .main-content-cta {
+        top: 70%;
+        right: 17%;
+    }
+    .btn {
+        padding: 1rem 2rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        height: 30vh;
+    }
+
+    .panc-notice {
+        width: 100%;
+        height: 50%;
+    }
+    .panc-notice h1 {
+        font-size: 2rem;
+        margin: auto;
+    }
+    .panc-notice h1::before {
+        width: 6rem;
+    }
+    .statistics {
+        height: 50%;
+        padding: 0 1rem;
+        justify-content: space-evenly;
+    }
+    .statistics .item i{
+        font-size: 3rem;
+        padding: 0 1.5rem;
+    }
+    .item-desc h1 {
+        font-size: 1.6rem;
+    }
+    .item-desc p {
+        font-size: .8rem;
+    }
+    .menu-toggle{
+        display: block;
+    }
+    .sidebar nav {
+       position: absolute;
+       z-index: 999; /* Ensures its above the wrapper */
+       width: 100%;
+       height: 111vh;
+       background: #333;
+       top: 70px; /* Places background 70px from top*/
+       left: -100%; /* Hides navigation*/
+       transition: 0.5s;
+    }
+    .sidebar nav.active {
+        left: 0; /* Shows navigation when active class is applied*/
+    }
+}
